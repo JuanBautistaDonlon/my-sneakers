@@ -1,22 +1,20 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
-import CartWidget from '../CartWidget/CartWidget';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
 function NavBar() {
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                    My Sneakers
-                </Typography>
-
-                <Button color="inherit">NIKE</Button>
-                <Button color="inherit">ADIDAS</Button>
-                <Button color="inherit">VANS</Button>
-
-                <CartWidget />
-            </Toolbar>
-        </AppBar>
+        <nav className={styles.navbar}>
+            <Link to="/" className={styles.brand}>
+                <span>My Sneakers</span>
+            </Link>
+            <div className={styles.categories}>
+                <Link to="/category/nike">NIKE</Link>
+                <Link to="/category/adidas">ADIDAS</Link>
+                <Link to="/category/vans">VANS</Link>
+            </div>
+            <Link to="/cart" className={styles.cart}>🛒</Link>
+        </nav>
     );
 }
 

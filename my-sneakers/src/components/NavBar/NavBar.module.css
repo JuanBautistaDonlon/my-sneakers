@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.brand {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.brand span {
+    pointer-events: none;
+}
+
+.categories a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.cart {
+    font-size: 20px;
+}

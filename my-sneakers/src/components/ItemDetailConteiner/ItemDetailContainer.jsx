@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Item from "../Item/Item";
-import styles from "./ItemListContainer.module.css";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const mockProducts = [
     { id: 1, name: "Nike Air Force 1", brand: "Nike", price: 120, stock: 5, category: "nike", img: "/images/nike-air-force-1.png.webp" },
@@ -15,39 +14,34 @@ const mockProducts = [
     { id: 9, name: "Vans Authentic", brand: "Vans", price: 80, stock: 10, category: "vans", img: "/images/vans-authentic.png.webp" },
 ];
 
-function ItemListContainer() {
-    const { categoryId } = useParams();
-    const [products, setProducts] = useState([]);
+
+function ItemDetailContainer() {
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
 
-        const fetchProducts = new Promise((resolve) => {
+        const fetchProduct = new Promise((resolve) => {
             setTimeout(() => {
-                const filteredProducts = categoryId ? mockProducts.filter((p) => p.category === categoryId) : mockProducts;
-                resolve(filteredProducts);
+                const foundProduct = mockProducts.find((p) => p.id === parseInt(id));
+                resolve(foundProduct);
             }, 1000);
         });
 
-        fetchProducts
-            .then((data) => setProducts(data))
+        fetchProduct
+            .then((data) => setProduct(data))
             .finally(() => setLoading(false));
 
-    }, [categoryId]);
+    }, [id]);
 
     return (
-        <div className={styles.container}>
-            <h2>{categoryId ? `Productos de ${categoryId}` : "Catálogo completo"}</h2>
-            {loading ? <p>Cargando productos...</p> : (
-                <div className={styles.grid}>
-                    {products.map((product) => (
-                        <Item key={product.id} product={product} />
-                    ))}
-                </div>
-            )}
+        <div>
+            {loading ? <p>Cargando producto...</p> : product ? <ItemDetail product={product} /> : <p>Producto no encontrado</p>}
         </div>
     );
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer;
+
