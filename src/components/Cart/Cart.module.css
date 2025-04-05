@@ -1,0 +1,38 @@
+.cart-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+}
+
+.cart-item:last-child {
+    border: none;
+}
+
+.cart-total {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.cart-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-buttons button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 8px 12px;
+    margin: 5px;
+}
+
+.cart-buttons button:hover {
+    background-color: #218838;
+}
